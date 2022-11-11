@@ -17,10 +17,10 @@ CREATE TABLE recibos(
     mes TINYINT NOT NULL,
     anio SMALLINT NOT NULL,
     sueldo_bruto DECIMAL(9,2) NOT NULL,
-    incremento_antiguedad DECIMAL(5,2) NOT NULL,
-    ded_jubilacion DECIMAL(5,2) NOT NULL,
-    ded_obra_social DECIMAL(5,2) NOT NULL,
-    ded_fondo_alta_compl DECIMAL(5,2) NOT NULL,
+    incremento_antiguedad DECIMAL(7,2) NOT NULL,
+    ded_jubilacion DECIMAL(7,2) NOT NULL,
+    ded_obra_social DECIMAL(7,2) NOT NULL,
+    ded_fondo_alta_compl DECIMAL(7,2) NOT NULL,
     legajo_empleado INT NOT NULL, 
     PRIMARY KEY (nro_recibo),
     FOREIGN KEY (legajo_empleado) REFERENCES empleados (legajo)
@@ -35,6 +35,21 @@ BEGIN
 	DECLARE aniosAntiguedad INT;
     SET aniosAntiguedad = TIMESTAMPDIFF(YEAR, fecha, NOW());
     RETURN aniosAntiguedad;
+END//
+
+CREATE FUNCTION calcularSueldoNeto(
+	sueldo_b DECIMAL(9,2),
+    inc_ant DECIMAL(7,2),
+    ded_jub DECIMAL(7,2),
+    deb_os DECIMAL(7,2),
+    ded_fac DECIMAL(7,2))
+RETURNS DECIMAL(9,2)
+READS SQL DATA
+DETERMINISTIC
+BEGIN
+	DECLARE sueldo_neto DECIMAL(9,2);
+	SET sueldo_neto = sueldo_b + inc_ant - ded_jub - deb_os - ded_fac;
+    RETURN sueldo_neto;
 END//
 
 CREATE PROCEDURE getEmpleados()
@@ -61,7 +76,16 @@ DELIMITER ;
 
 CREATE VIEW empleadosConAntiguedad
 AS
-	select e.legajo, e.nombre, e.apellido, e.fecha_nacimiento,
-    calcularAntiguedad(e.fecha_ingreso) as antiguedad,
+	SELECT e.legajo, e.nombre, e.apellido, e.fecha_nacimiento,
+    calcularAntiguedad(e.fecha_ingreso) AS antiguedad,
     e.sueldo_bruto, e.area
-    from empleados e;
+    FROM empleados e;
+    
+CREATE VIEW recibosNetos
+AS
+	SELECT nro_recibo, legajo_empleado, mes, anio, sueldo_bruto,
+    incremento_antiguedad, ded_jubilacion, ded_obra_social, ded_fondo_alta_compl,
+    calcularSueldoNeto(sueldo_bruto, incremento_antiguedad, ded_jubilacion,
+    ded_obra_social, ded_fondo_alta_compl) as sueldo_neto
+    from recibos
+	
