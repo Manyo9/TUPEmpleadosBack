@@ -1,34 +1,34 @@
-create database empleados;
-use empleados;
+CREATE DATABASE Empleados;
+USE Empleados;
 
-create table areas(
-id smallint auto_increment not null,
-nombre varchar(50) not null,
-primary key (id)
+CREATE TABLE Areas(
+    id SMALLINT AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id)
 );
 
-create table empleados(
-legajo int auto_increment not null,
-nombre varchar(32) not null,
-apellido varchar(32) not null,
-fechaNacimiento date not null,
-fechaIngreso date not null,
-sueldoBruto decimal(9,2) not null,
-idArea smallint not null,
-primary key (legajo),
-foreign key (idArea) references areas (id)
+CREATE TABLE Empleados(
+    legajo int AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(32) NOT NULL,
+    apellido VARCHAR(32) NOT NULL,
+    fechaNacimiento DATE NOT NULL,
+    fechaIngreso DATE NOT NULL,
+    sueldoBruto DECIMAL(9,2) NOT NULL,
+    idArea SMALLINT NOT NULL,
+    PRIMARY KEY (legajo),
+    FOREIGN KEY (idArea) REFERENCES areas (id)
 );
 
-create table recibos(
-nroRecibo int auto_increment not null,
-mes tinyint not null,
-anio smallint not null,
-sueldoBruto decimal(9,2) not null,
-incrementoAntiguedad decimal(5,2) not null,
-dedJubilacion decimal(5,2) not null,
-dedObraSocial decimal(5,2) not null,
-dedFondoAltaCompl decimal(5,2) not null,
-legajoEmpleado int not null, 
-primary key (nroRecibo),
-foreign key (legajoEmpleado) references empleados (legajo)
+CREATE TABLE Recibos(
+    nroRecibo int AUTO_INCREMENT NOT NULL,
+    mes tinyint NOT NULL,
+    anio SMALLINT NOT NULL,
+    sueldoBruto DECIMAL(9,2) NOT NULL,
+    incrementoAntiguedad DECIMAL(5,2) NOT NULL,
+    dedJubilacion DECIMAL(5,2) NOT NULL,
+    dedObraSocial DECIMAL(5,2) NOT NULL,
+    dedFondoAltaCompl DECIMAL(5,2) NOT NULL,
+    legajoEmpleado int NOT NULL, 
+    PRIMARY KEY (nroRecibo),
+    FOREIGN KEY (legajoEmpleado) REFERENCES empleados (legajo)
 );
