@@ -1,13 +1,13 @@
-CREATE DATABASE Empleados;
-USE Empleados;
+CREATE DATABASE db_empleados;
+USE db_empleados;
 
-CREATE TABLE Areas(
+CREATE TABLE t_areas(
     id SMALLINT AUTO_INCREMENT NOT NULL,
     nombre VARCHAR(50) NOT NULL,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE Empleados(
+CREATE TABLE t_empleados(
     legajo INT AUTO_INCREMENT NOT NULL,
     nombre VARCHAR(32) NOT NULL,
     apellido VARCHAR(32) NOT NULL,
@@ -16,10 +16,10 @@ CREATE TABLE Empleados(
     sueldo_bruto DECIMAL(9,2) NOT NULL,
     id_area SMALLINT NOT NULL,
     PRIMARY KEY (legajo),
-    FOREIGN KEY (id_area) REFERENCES Areas (id)
+    FOREIGN KEY (id_area) REFERENCES areas (id)
 );
 
-CREATE TABLE Recibos(
+CREATE TABLE t_recibos(
     nro_recibo INT AUTO_INCREMENT NOT NULL,
     mes TINYINT NOT NULL,
     anio SMALLINT NOT NULL,
@@ -30,5 +30,5 @@ CREATE TABLE Recibos(
     ded_fondo_alta_compl DECIMAL(5,2) NOT NULL,
     legajo_empleado INT NOT NULL, 
     PRIMARY KEY (nro_recibo),
-    FOREIGN KEY (legajo_empleado) REFERENCES Empleados (legajo)
+    FOREIGN KEY (legajo_empleado) REFERENCES empleados (legajo)
 );
