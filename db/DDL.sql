@@ -11,24 +11,24 @@ CREATE TABLE Empleados(
     legajo INT AUTO_INCREMENT NOT NULL,
     nombre VARCHAR(32) NOT NULL,
     apellido VARCHAR(32) NOT NULL,
-    fechaNacimiento DATE NOT NULL,
-    fechaIngreso DATE NOT NULL,
-    sueldoBruto DECIMAL(9,2) NOT NULL,
-    idArea SMALLINT NOT NULL,
+    fecha_nacimiento DATE NOT NULL,
+    fecha_ingreso DATE NOT NULL,
+    sueldo_bruto DECIMAL(9,2) NOT NULL,
+    id_area SMALLINT NOT NULL,
     PRIMARY KEY (legajo),
-    FOREIGN KEY (idArea) REFERENCES Areas (id)
+    FOREIGN KEY (id_area) REFERENCES Areas (id)
 );
 
 CREATE TABLE Recibos(
-    nroRecibo INT AUTO_INCREMENT NOT NULL,
+    nro_recibo INT AUTO_INCREMENT NOT NULL,
     mes TINYINT NOT NULL,
     anio SMALLINT NOT NULL,
-    sueldoBruto DECIMAL(9,2) NOT NULL,
-    incrementoAntiguedad DECIMAL(5,2) NOT NULL,
-    dedJubilacion DECIMAL(5,2) NOT NULL,
-    dedObraSocial DECIMAL(5,2) NOT NULL,
-    dedFondoAltaCompl DECIMAL(5,2) NOT NULL,
-    legajoEmpleado INT NOT NULL, 
-    PRIMARY KEY (nroRecibo),
-    FOREIGN KEY (legajoEmpleado) REFERENCES Empleados (legajo)
+    sueldo_bruto DECIMAL(9,2) NOT NULL,
+    incremento_antiguedad DECIMAL(5,2) NOT NULL,
+    ded_jubilacion DECIMAL(5,2) NOT NULL,
+    ded_obraSocial DECIMAL(5,2) NOT NULL,
+    ded_fondo_alta_compl DECIMAL(5,2) NOT NULL,
+    legajo_empleado INT NOT NULL, 
+    PRIMARY KEY (nro_recibo),
+    FOREIGN KEY (legajo_empleado) REFERENCES Empleados (legajo)
 );
