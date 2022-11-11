@@ -8,7 +8,7 @@ CREATE TABLE Areas(
 );
 
 CREATE TABLE Empleados(
-    legajo int AUTO_INCREMENT NOT NULL,
+    legajo INT AUTO_INCREMENT NOT NULL,
     nombre VARCHAR(32) NOT NULL,
     apellido VARCHAR(32) NOT NULL,
     fechaNacimiento DATE NOT NULL,
@@ -20,15 +20,15 @@ CREATE TABLE Empleados(
 );
 
 CREATE TABLE Recibos(
-    nroRecibo int AUTO_INCREMENT NOT NULL,
-    mes tinyint NOT NULL,
+    nroRecibo INT AUTO_INCREMENT NOT NULL,
+    mes TINYINT NOT NULL,
     anio SMALLINT NOT NULL,
     sueldoBruto DECIMAL(9,2) NOT NULL,
     incrementoAntiguedad DECIMAL(5,2) NOT NULL,
     dedJubilacion DECIMAL(5,2) NOT NULL,
     dedObraSocial DECIMAL(5,2) NOT NULL,
     dedFondoAltaCompl DECIMAL(5,2) NOT NULL,
-    legajoEmpleado int NOT NULL, 
+    legajoEmpleado INT NOT NULL, 
     PRIMARY KEY (nroRecibo),
     FOREIGN KEY (legajoEmpleado) REFERENCES Empleados (legajo)
 );
