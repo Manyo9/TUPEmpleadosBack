@@ -1,12 +1,6 @@
 CREATE DATABASE db_empleados;
 USE db_empleados;
 
-CREATE TABLE areas(
-    id SMALLINT AUTO_INCREMENT NOT NULL,
-    nombre VARCHAR(50) NOT NULL,
-    PRIMARY KEY (id)
-);
-
 CREATE TABLE empleados(
     legajo INT AUTO_INCREMENT NOT NULL,
     nombre VARCHAR(32) NOT NULL,
@@ -14,7 +8,7 @@ CREATE TABLE empleados(
     fecha_nacimiento DATE NOT NULL,
     fecha_ingreso DATE NOT NULL,
     sueldo_bruto DECIMAL(9,2) NOT NULL,
-    id_area SMALLINT NOT NULL,
+    area varchar(50) NOT NULL,
     PRIMARY KEY (legajo),
     FOREIGN KEY (id_area) REFERENCES areas (id)
 );
@@ -50,11 +44,20 @@ CREATE VIEW empleadosConAntiguedad
 AS
 	select e.legajo, e.nombre, e.apellido, e.fecha_nacimiento,
     calcularAntiguedad(e.fecha_ingreso) as antiguedad,
-    e.sueldo_bruto, a.nombre as area
+    e.sueldo_bruto, e.area
     from empleados e
-    join areas a on e.id_area = a.id;
 
 DELIMITER //
+
+CREATE PROCEDURE getEmpleados()
+BEGIN
+	select * from empleadosConAntiguedad;
+END//
+
+CREATE PROCEDURE getRawEmpleados()
+BEGIN
+	select * from empleados;
+END//
 
 CREATE PROCEDURE getEmpleadoById(IN id INT)
 BEGIN
@@ -67,5 +70,3 @@ BEGIN
 END//
 
 DELIMITER ;
-
-call getEmpleadoById(1);
