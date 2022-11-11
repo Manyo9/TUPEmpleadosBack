@@ -16,7 +16,7 @@ CREATE TABLE Empleados(
     sueldoBruto DECIMAL(9,2) NOT NULL,
     idArea SMALLINT NOT NULL,
     PRIMARY KEY (legajo),
-    FOREIGN KEY (idArea) REFERENCES areas (id)
+    FOREIGN KEY (idArea) REFERENCES Areas (id)
 );
 
 CREATE TABLE Recibos(
@@ -30,5 +30,5 @@ CREATE TABLE Recibos(
     dedFondoAltaCompl DECIMAL(5,2) NOT NULL,
     legajoEmpleado int NOT NULL, 
     PRIMARY KEY (nroRecibo),
-    FOREIGN KEY (legajoEmpleado) REFERENCES empleados (legajo)
+    FOREIGN KEY (legajoEmpleado) REFERENCES Empleados (legajo)
 );
