@@ -26,7 +26,7 @@ CREATE TABLE t_recibos(
     sueldo_bruto DECIMAL(9,2) NOT NULL,
     incremento_antiguedad DECIMAL(5,2) NOT NULL,
     ded_jubilacion DECIMAL(5,2) NOT NULL,
-    ded_obraSocial DECIMAL(5,2) NOT NULL,
+    ded_obra_social DECIMAL(5,2) NOT NULL,
     ded_fondo_alta_compl DECIMAL(5,2) NOT NULL,
     legajo_empleado INT NOT NULL, 
     PRIMARY KEY (nro_recibo),
