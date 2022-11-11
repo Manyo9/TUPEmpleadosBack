@@ -16,7 +16,7 @@ CREATE TABLE t_empleados(
     sueldo_bruto DECIMAL(9,2) NOT NULL,
     id_area SMALLINT NOT NULL,
     PRIMARY KEY (legajo),
-    FOREIGN KEY (id_area) REFERENCES areas (id)
+    FOREIGN KEY (id_area) REFERENCES t_areas (id)
 );
 
 CREATE TABLE t_recibos(
@@ -30,5 +30,5 @@ CREATE TABLE t_recibos(
     ded_fondo_alta_compl DECIMAL(5,2) NOT NULL,
     legajo_empleado INT NOT NULL, 
     PRIMARY KEY (nro_recibo),
-    FOREIGN KEY (legajo_empleado) REFERENCES empleados (legajo)
+    FOREIGN KEY (legajo_empleado) REFERENCES t_empleados (legajo)
 );
