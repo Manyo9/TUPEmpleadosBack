@@ -28,21 +28,32 @@ VALUES (1, 3, 2022, 116300.00, 11630, 5852.22, 18450.33, 4036.44);	 # 3
 ### Empleado 2
 INSERT INTO recibos
 (legajo_empleado, mes, anio, sueldo_bruto, incremento_antiguedad, ded_jubilacion, ded_obra_social, ded_fondo_alta_compl)
-VALUES (2, 1, 2022, 90000.00, 8000.00, 4500.15, 12580.33, 1350.48);	 # 1
+VALUES (2, 1, 2022, 90000.00, 8000.00, 4500.15, 12580.33, 1350.48);	 # 4
 INSERT INTO recibos 
 (legajo_empleado, mes, anio, sueldo_bruto, incremento_antiguedad, ded_jubilacion, ded_obra_social, ded_fondo_alta_compl)
-VALUES (2, 2, 2022, 91000.00, 8100.25, 4555.55, 12601.10, 1360.53);	 # 2
+VALUES (2, 2, 2022, 91000.00, 8100.25, 4555.55, 12601.10, 1360.53);	 # 5
 INSERT INTO recibos 
 (legajo_empleado, mes, anio, sueldo_bruto, incremento_antiguedad, ded_jubilacion, ded_obra_social, ded_fondo_alta_compl)
-VALUES (2, 3, 2022, 93300.00, 8233.33, 2623.03, 12650.00, 1401.69);	 # 3
+VALUES (2, 3, 2022, 93300.00, 8233.33, 2623.03, 12650.00, 1401.69);	 # 6
 
 ### Empleado 3
 INSERT INTO recibos
 (legajo_empleado, mes, anio, sueldo_bruto, incremento_antiguedad, ded_jubilacion, ded_obra_social, ded_fondo_alta_compl)
-VALUES (3, 1, 2022, 145120.00, 20100.50, 9112.23, 16300.00, 2223.56);	 # 1
+VALUES (3, 1, 2022, 145120.00, 20100.50, 9112.23, 16300.00, 2223.56);	 # 7
 INSERT INTO recibos 
 (legajo_empleado, mes, anio, sueldo_bruto, incremento_antiguedad, ded_jubilacion, ded_obra_social, ded_fondo_alta_compl)
-VALUES (3, 2, 2022, 146200.00, 20320.36, 9162.60, 16325.00, 2250.36);	 # 2
+VALUES (3, 2, 2022, 146200.00, 20320.36, 9162.60, 16325.00, 2250.36);	 # 8
 INSERT INTO recibos 
 (legajo_empleado, mes, anio, sueldo_bruto, incremento_antiguedad, ded_jubilacion, ded_obra_social, ded_fondo_alta_compl)
-VALUES (3, 3, 2022, 147350.00, 21003.30, 9210.01, 16402.96, 2320.74);	 # 3
+VALUES (3, 3, 2022, 147350.00, 21003.30, 9210.01, 16402.96, 2320.74);	 # 9
+
+### Empleado 4
+INSERT INTO recibos
+(legajo_empleado, mes, anio, sueldo_bruto, incremento_antiguedad, ded_jubilacion, ded_obra_social, ded_fondo_alta_compl)
+VALUES (4, 1, 2022, 95120.00, 9100.50, 5102.25, 10310.00, 1563.16);	 # 10
+INSERT INTO recibos 
+(legajo_empleado, mes, anio, sueldo_bruto, incremento_antiguedad, ded_jubilacion, ded_obra_social, ded_fondo_alta_compl)
+VALUES (4, 2, 2022, 97200.00, 9320.36, 5132.67, 10321.00, 1557.31);	 # 11
+INSERT INTO recibos 
+(legajo_empleado, mes, anio, sueldo_bruto, incremento_antiguedad, ded_jubilacion, ded_obra_social, ded_fondo_alta_compl)
+VALUES (4, 3, 2022, 98050.00, 9003.30, 5220.81, 10412.96, 1571.61);	 # 12
