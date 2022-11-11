@@ -32,3 +32,40 @@ CREATE TABLE recibos(
     PRIMARY KEY (nro_recibo),
     FOREIGN KEY (legajo_empleado) REFERENCES empleados (legajo)
 );
+
+DELIMITER //
+CREATE FUNCTION calcularAntiguedad( fecha date )
+RETURNS INT
+READS SQL DATA
+DETERMINISTIC
+BEGIN
+	DECLARE aniosAntiguedad INT;
+    SET aniosAntiguedad = TIMESTAMPDIFF(YEAR, fecha, NOW());
+    RETURN aniosAntiguedad;
+END//
+
+DELIMITER ;
+
+CREATE VIEW empleadosConAntiguedad
+AS
+	select e.legajo, e.nombre, e.apellido, e.fecha_nacimiento,
+    calcularAntiguedad(e.fecha_ingreso) as antiguedad,
+    e.sueldo_bruto, a.nombre as area
+    from empleados e
+    join areas a on e.id_area = a.id;
+
+DELIMITER //
+
+CREATE PROCEDURE getEmpleadoById(IN id INT)
+BEGIN
+	select * from empleadosConAntiguedad where legajo = id;
+END//
+
+CREATE PROCEDURE getRawEmpleadoById(IN id INT)
+BEGIN
+	select * from empleados where legajo = id;
+END//
+
+DELIMITER ;
+
+call getEmpleadoById(1);
