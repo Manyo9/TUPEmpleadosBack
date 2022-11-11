@@ -37,17 +37,6 @@ BEGIN
     RETURN aniosAntiguedad;
 END//
 
-DELIMITER ;
-
-CREATE VIEW empleadosConAntiguedad
-AS
-	select e.legajo, e.nombre, e.apellido, e.fecha_nacimiento,
-    calcularAntiguedad(e.fecha_ingreso) as antiguedad,
-    e.sueldo_bruto, e.area
-    from empleados e
-
-DELIMITER //
-
 CREATE PROCEDURE getEmpleados()
 BEGIN
 	select * from empleadosConAntiguedad;
@@ -69,3 +58,10 @@ BEGIN
 END//
 
 DELIMITER ;
+
+CREATE VIEW empleadosConAntiguedad
+AS
+	select e.legajo, e.nombre, e.apellido, e.fecha_nacimiento,
+    calcularAntiguedad(e.fecha_ingreso) as antiguedad,
+    e.sueldo_bruto, e.area
+    from empleados e;
