@@ -9,8 +9,7 @@ CREATE TABLE empleados(
     fecha_ingreso DATE NOT NULL,
     sueldo_bruto DECIMAL(9,2) NOT NULL,
     area varchar(50) NOT NULL,
-    PRIMARY KEY (legajo),
-    FOREIGN KEY (id_area) REFERENCES areas (id)
+    PRIMARY KEY (legajo)
 );
 
 CREATE TABLE recibos(
