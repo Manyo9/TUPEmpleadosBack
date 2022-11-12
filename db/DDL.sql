@@ -87,7 +87,7 @@ AS
     incremento_antiguedad, ded_jubilacion, ded_obra_social, ded_fondo_alta_compl,
     calcularSueldoNeto(sueldo_bruto, incremento_antiguedad, ded_jubilacion,
     ded_obra_social, ded_fondo_alta_compl) as sueldo_neto
-    from recibos
+    from recibos;
 
 CREATE VIEW sueldosNetosPorArea
 AS
@@ -95,4 +95,3 @@ AS
     from recibosNetos r join empleados e
     on r.legajo_empleado = e.legajo
     group by e.area;
-		
