@@ -91,7 +91,7 @@ AS
 
 CREATE VIEW sueldosNetosPorArea
 AS
-	SELECT e.area, sum(sueldo_neto)total,count(sueldo_neto) recibos
+	SELECT e.area, sum(sueldo_neto)total,count(sueldo_neto) cantidad_recibos
     from recibosNetos r join empleados e
     on r.legajo_empleado = e.legajo
     group by e.area;
