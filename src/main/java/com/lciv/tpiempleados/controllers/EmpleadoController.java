@@ -1,9 +1,6 @@
 package com.lciv.tpiempleados.controllers;
 
-import com.lciv.tpiempleados.entities.Empleado;
-import com.lciv.tpiempleados.entities.EmpleadoConAntiguedad;
-import com.lciv.tpiempleados.entities.Recibo;
-import com.lciv.tpiempleados.entities.ReciboNeto;
+import com.lciv.tpiempleados.entities.*;
 import com.lciv.tpiempleados.services.EmpleadoService;
 import com.lciv.tpiempleados.services.ReciboService;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +17,6 @@ public class EmpleadoController {
         this.empleadoService = empleadoService;
         this.reciboService = reciboService;
     }
-
     @GetMapping()
     public List<EmpleadoConAntiguedad> getEmpleados() {
         return this.empleadoService.getEmpleados();
@@ -33,8 +29,5 @@ public class EmpleadoController {
     public void registrarEmpleado(@RequestBody Empleado empleado) {
         this.empleadoService.guardarEmpleado(empleado);
     }
-    @PostMapping("/recibos/nuevo")
-    public void registrarRecibo(@RequestBody Recibo recibo) {
-        this.reciboService.guardarRecibo(recibo);
-    }
+
 }

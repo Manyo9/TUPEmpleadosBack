@@ -8,9 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 
-/**
- * Mapping for DB view
- */
+
 @Entity
 @Immutable
 @Table(name = "recibosnetos")

@@ -9,9 +9,7 @@ import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-/**
- * Mapping for DB view
- */
+
 @Entity
 @Immutable
 @Table(name = "empleadosconantiguedad")
