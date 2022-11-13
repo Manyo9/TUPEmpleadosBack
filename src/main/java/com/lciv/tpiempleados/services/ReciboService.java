@@ -29,9 +29,7 @@ public class ReciboService {
         this.reciboNetoRepository = reciboNetoRepository;
         this.sueldoPorAreaRepository = sueldoPorAreaRepository;
     }
-    public void guardarRecibo(Recibo recibo) {
-        this.reciboRepository.save(recibo);
-    }
+    public Recibo guardarRecibo(Recibo recibo) { return this.reciboRepository.save(recibo); }
 
     public List<ReciboNeto> obtenerPorLegajo(Integer legajo) {
         Optional<List<ReciboNeto>> resultado = this.reciboNetoRepository.getAllByLegajo(legajo);

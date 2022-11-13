@@ -20,7 +20,7 @@ public class ReciboController {
         return this.reciboService.obtenerPorMesAnioAgrupados(anio,mes);
     }
     @PostMapping("/nuevo")
-    public void registrarRecibo(@RequestBody Recibo recibo) {
-        this.reciboService.guardarRecibo(recibo);
+    public Recibo registrarRecibo(@RequestBody Recibo recibo) {
+        return this.reciboService.guardarRecibo(recibo);
     }
 }

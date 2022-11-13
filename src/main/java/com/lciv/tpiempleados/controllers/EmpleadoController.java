@@ -26,8 +26,8 @@ public class EmpleadoController {
         return this.reciboService.obtenerPorLegajo(legajo);
     }
     @PostMapping("/nuevo")
-    public void registrarEmpleado(@RequestBody Empleado empleado) {
-        this.empleadoService.guardarEmpleado(empleado);
+    public Empleado registrarEmpleado(@RequestBody Empleado empleado) {
+        return this.empleadoService.guardarEmpleado(empleado);
     }
 
 }

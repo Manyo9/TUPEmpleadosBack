@@ -23,7 +23,7 @@ public class EmpleadoService {
     public List<EmpleadoConAntiguedad> getEmpleados() {
         return this.empleadoAntiguedadRepository.findAll();
     }
-    public void guardarEmpleado(Empleado empleado) {
-        this.empleadoRepository.save(empleado);
+    public Empleado guardarEmpleado(Empleado empleado) {
+        return this.empleadoRepository.save(empleado);
     }
 }
