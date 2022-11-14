@@ -95,4 +95,5 @@ AS
     r.anio, r.mes
     from recibosNetos r join empleados e
     on r.legajo_empleado = e.legajo
-    group by e.area, r.anio, r.mes;
+    group by e.area, r.anio, r.mes
+    order by 2 desc;
