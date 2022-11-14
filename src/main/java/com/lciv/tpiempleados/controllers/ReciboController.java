@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+//permitimos unicamente el puerto por defecto de angular
+@CrossOrigin( origins = "http://localhost:4200")
 @RequestMapping(path = "api/recibos")
 public class ReciboController {
     private final ReciboService reciboService;
