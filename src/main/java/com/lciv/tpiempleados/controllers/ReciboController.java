@@ -3,7 +3,9 @@ package com.lciv.tpiempleados.controllers;
 import com.lciv.tpiempleados.entities.*;
 import com.lciv.tpiempleados.services.EmpleadoService;
 import com.lciv.tpiempleados.services.ReciboService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class ReciboController {
     }
     @PostMapping("/nuevo")
     public Recibo registrarRecibo(@RequestBody Recibo recibo) {
-        return this.reciboService.guardarRecibo(recibo);
+        return this.reciboService.guardarRecibo(recibo)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Empleado no encontrado"));
     }
 }
