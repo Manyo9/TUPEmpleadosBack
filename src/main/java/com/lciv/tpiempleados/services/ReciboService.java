@@ -32,26 +32,18 @@ public class ReciboService {
         this.sueldoPorAreaRepository = sueldoPorAreaRepository;
         this.empleadoRepository = empleadoRepository;
     }
-    public Optional<Recibo> guardarRecibo(Recibo recibo) {
+    public Recibo guardarRecibo(Recibo recibo) {
         if (this.empleadoRepository.existsById(recibo.getLegajoEmpleado().getLegajo())){
-            return Optional.of(this.reciboRepository.save(recibo));
+            return this.reciboRepository.save(recibo);
         }
-        return Optional.empty();
+        throw new IllegalArgumentException("No existe un empleado con el legajo ingresado");
 
     }
 
-    public List<ReciboNeto> obtenerPorLegajo(Integer legajo) {
-        Optional<List<ReciboNeto>> resultado = this.reciboNetoRepository.getAllByLegajo(legajo);
-        if(resultado.isPresent()) {
-            return resultado.get();
-        }
-        return new ArrayList<>();
+    public Optional<List<ReciboNeto>> obtenerPorLegajo(Integer legajo) {
+        return this.reciboNetoRepository.getAllByLegajo(legajo);
     }
-    public List<SueldoNetoPorArea> obtenerPorMesAnioAgrupados(Short anio, Byte mes) {
-        Optional<List<SueldoNetoPorArea>> resultado = this.sueldoPorAreaRepository.getAllByMesAnio(anio, mes);
-        if(resultado.isPresent()) {
-            return resultado.get();
-        }
-        return new ArrayList<>();
+    public Optional<List<SueldoNetoPorArea>> obtenerPorMesAnioAgrupados(Short anio, Byte mes) {
+        return this.sueldoPorAreaRepository.getAllByMesAnio(anio, mes);
     }
 }
