@@ -7,7 +7,7 @@ CREATE TABLE empleados(
     apellido VARCHAR(32) NOT NULL,
     fecha_nacimiento DATE NOT NULL,
     fecha_ingreso DATE NOT NULL,
-    sueldo_bruto DECIMAL(9,2) NOT NULL,
+    sueldo_bruto DECIMAL(12,2) NOT NULL,
     area varchar(50) NOT NULL,
     PRIMARY KEY (legajo)
 );
@@ -16,11 +16,11 @@ CREATE TABLE recibos(
     nro_recibo INT AUTO_INCREMENT NOT NULL,
     mes TINYINT NOT NULL,
     anio SMALLINT NOT NULL,
-    sueldo_bruto DECIMAL(9,2) NOT NULL,
-    incremento_antiguedad DECIMAL(7,2) NOT NULL,
-    ded_jubilacion DECIMAL(7,2) NOT NULL,
-    ded_obra_social DECIMAL(7,2) NOT NULL,
-    ded_fondo_alta_compl DECIMAL(7,2) NOT NULL,
+    sueldo_bruto DECIMAL(12,2) NOT NULL,
+    incremento_antiguedad DECIMAL(11,2) NOT NULL,
+    ded_jubilacion DECIMAL(11,2) NOT NULL,
+    ded_obra_social DECIMAL(11,2) NOT NULL,
+    ded_fondo_alta_compl DECIMAL(11,2) NOT NULL,
     legajo_empleado INT NOT NULL, 
     PRIMARY KEY (nro_recibo),
     FOREIGN KEY (legajo_empleado) REFERENCES empleados (legajo)
@@ -38,38 +38,18 @@ BEGIN
 END//
 
 CREATE FUNCTION calcularSueldoNeto(
-	sueldo_b DECIMAL(9,2),
-    inc_ant DECIMAL(7,2),
-    ded_jub DECIMAL(7,2),
-    deb_os DECIMAL(7,2),
-    ded_fac DECIMAL(7,2))
-RETURNS DECIMAL(9,2)
+	sueldo_b DECIMAL(12,2),
+    inc_ant DECIMAL(11,2),
+    ded_jub DECIMAL(11,2),
+    deb_os DECIMAL(11,2),
+    ded_fac DECIMAL(11,2))
+RETURNS DECIMAL(12,2)
 READS SQL DATA
 DETERMINISTIC
 BEGIN
-	DECLARE sueldo_neto DECIMAL(9,2);
+	DECLARE sueldo_neto DECIMAL(12,2);
 	SET sueldo_neto = sueldo_b + inc_ant - ded_jub - deb_os - ded_fac;
     RETURN sueldo_neto;
-END//
-
-CREATE PROCEDURE getEmpleados()
-BEGIN
-	select * from empleadosConAntiguedad;
-END//
-
-CREATE PROCEDURE getRawEmpleados()
-BEGIN
-	select * from empleados;
-END//
-
-CREATE PROCEDURE getEmpleadoById(IN id INT)
-BEGIN
-	select * from empleadosConAntiguedad where legajo = id;
-END//
-
-CREATE PROCEDURE getRawEmpleadoById(IN id INT)
-BEGIN
-	select * from empleados where legajo = id;
 END//
 
 DELIMITER ;
